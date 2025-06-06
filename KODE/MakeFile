@@ -1,0 +1,42 @@
+# CAOS Threads Makefile — alle programmer fra mappen
+CC = gcc
+CFLAGS = -Wall -mconsole
+LDLIBS = -lpthread
+
+SOURCES = \
+    06_thread_arguments.c \
+    07_parallel_sum_barrier.c \
+    08_thread_safe_logger.c \
+    09_conditional_wait_agent.c \
+    10_race_condition_demo.c \
+    barrier_sync.c \
+    conditional.c \
+    countdown_threads.c \
+    hello_Threads.c \
+    interleaved_output_safe.c \
+    main.c \
+    multi_consumer.c \
+    ping_pong.c \
+    pingpong_mutex_toggle.c \
+    producer_consumer.c \
+    read_write_demo.c \
+    shared_counter_mutex.c \
+    thread_cascade_sum.c \
+    thread_chain_dependency.c \
+    thread_create_loop.c \
+    thread_pool.c \
+    thread_return_value.c \
+    thread_timer_demo.c \
+    toggle_flag_shared.c \
+    wait_multiple_threads.c \
+    write_array.c
+
+EXES = $(SOURCES:.c=.exe)
+
+all: $(EXES)
+
+%.exe: %.c
+	$(CC) $(CFLAGS) $< -o $@ $(LDLIBS)
+
+clean:
+	del /Q *.exe
